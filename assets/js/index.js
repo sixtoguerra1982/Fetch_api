@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 fetch(info.url)
                 .then((response) => response.json())
                 .then(datapoke => {
-                    img = datapoke.sprites.front_default
+                    img = datapoke.sprites.other.dream_world.front_default
                     let div = document.createElement('div');
-                    div.className = "col-md-4 pokemon"
-                    let new_element =  `<div class="card mb-5 mt-5 pt-5 pb-5" style="width: 18rem;">
-                    <img src="${img}" class="card-img-top" alt="${img}">
+                    div.className = "col-md-4 pokemon mt-2 mb-2"
+                    let new_element =  `<div class="card">
+                    <img src="${img}" class="card-img-top mt-2 p-4" alt="${img}" height="200px" width="200px">
                     <div class="card-body">
                     <h1 class="card-title">${info.name}</h1>
                     <a id='enlace-${n}' href="#" url="${info.url}" class="btn btn-primary pokemodal">¡Quiero ver más de este pokémon!</a>
