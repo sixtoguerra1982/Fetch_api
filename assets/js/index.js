@@ -1,3 +1,16 @@
+function ModalUp(IdBtn){
+    let btn_clic = document.getElementById(IdBtn)
+    let url = btn_clic.getAttribute('url')
+    fetch(url)
+        .then((response) => response.json())
+        .then(data => {
+            let jsontext = document.getElementById("modal-body-text")
+            jsontext.innerHTML = data
+        })
+        .then( () => {
+            $('#myModal').modal('show') 
+        })
+}
 document.addEventListener('DOMContentLoaded', (e) => {
     // listado inicial
     function ApiRequest(url){
@@ -31,7 +44,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                     <img src="${img}" class="card-img-top mt-2 p-4" alt="${img}" height="200px" width="200px">
                     <div class="card-body">
                     <h1 class="card-title">${info.name}</h1>
-                    <a id='enlace-${n}' href="#" url="${info.url}" class="btn btn-primary pokemodal">¡Quiero ver más de este pokémon!</a>
+                    <a id='enlace-${n}' href="#" url="${info.url}" class="btn btn-primary pokemodal" onclick="ModalUp('enlace-${n}')">¡Quiero ver más de este pokémon!</a>
                     </div>
                     </div>`
                     n = n + 1
